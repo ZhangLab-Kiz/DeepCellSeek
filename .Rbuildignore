@@ -1,0 +1,14 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$
+^cran-comments\.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^codecov\.yml$
+^\.github$
+^_R$
+^_R_user$
+^\.Rhistory$
+^\.RData$
+^\.Ruserdata$ 
