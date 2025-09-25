@@ -1,0 +1,31 @@
+Package: DeepCellSeek
+Title: Dual-Architecture LLM Cell Annotation Engine
+Version: 1.0.0
+Authors@R: 
+    c(person("TianXiang", "Xiao", email = "xiaotianxiang251@mails.ucas.ac.cn", role = c("aut", "cre")), person("Chao", "Zhang", role = "aut"))
+Description: A dual-architecture R package for automated cell type and subtype annotation 
+    using Large Language Models. Provides two distinct annotation pathways: (1) Free Gateway 
+    Mode - a client interface to DeepCellSeek's remote API service that requires no API keys 
+    , and (2) Local Direct API Mode - direct integration with major LLM providers (OpenAI, Claude, DeepSeek, xAI, etc.) for users with their own API keys. Both modes support ensemble voting for enhanced accuracy and standardized Cell Ontology annotations.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends: 
+    R (>= 4.0.0)
+Imports:
+    httr2,
+    httr,
+    jsonlite,
+    glue,
+    stats,
+    utils
+Suggests:
+    dplyr,
+    future,
+    openai,
+    testthat (>= 3.0.0)
+URL: https://deepcellseek.kiz.ac.cn
+BugReports: https://github.com/DeepCellSeek/DeepCellSeek-R/issues 
+

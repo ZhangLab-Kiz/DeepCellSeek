@@ -7,6 +7,7 @@
 llm_subcelltype(
   input,
   tissuename = NULL,
+  species = "Human",
   celltypename = NULL,
   model = "deepseek-reasoner",
   topgenenumber = 10,
@@ -14,11 +15,13 @@ llm_subcelltype(
 )
 }
 \arguments{
-\item{input}{Input data for cell subtype annotation}
+\item{input}{Input data for cell subtype annotation (data frame or named list)}
 
-\item{tissuename}{Optional tissue name}
+\item{tissuename}{Tissue name (e.g., "Brain", "Lung")}
 
-\item{celltypename}{Optional cell type name}
+\item{species}{Species name (e.g., "Human", "Mouse")}
+
+\item{celltypename}{Parent cell type name}
 
 \item{model}{Model to use for annotation}
 

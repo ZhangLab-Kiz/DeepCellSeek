@@ -7,15 +7,18 @@
 llm_celltype(
   input,
   tissuename = NULL,
+  species = "Human",
   model = "deepseek-reasoner",
   topgenenumber = 10,
   api_key = NULL
 )
 }
 \arguments{
-\item{input}{Input data for cell type annotation}
+\item{input}{Input data for cell type annotation (data frame or named list)}
 
-\item{tissuename}{Optional tissue name}
+\item{tissuename}{Tissue name (e.g., "Brain", "Lung")}
+
+\item{species}{Species name (e.g., "Human", "Mouse")}
 
 \item{model}{Model to use for annotation}
 
