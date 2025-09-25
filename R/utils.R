@@ -3,6 +3,10 @@
 #' This module provides common utility functions used across different
 #' components of the DeepCellSeek package.
 
+# Import pipe operator
+#' @importFrom magrittr %>%
+NULL
+
 #' Process input data for cell annotation
 #' 
 #' This function standardizes different input formats (data frames, lists, vectors)
@@ -18,18 +22,14 @@
 #'   comma-separated gene lists
 #' @export
 process_input_data <- function(input, topgenenumber = 10) {
-  # Handle character input or list input that's already processed
   if (is.character(input) || (is.list(input) && !is.data.frame(input))) {
     if (is.character(input)) {
       processed <- input
     } else {
-      # Convert list to comma-separated strings
       processed <- sapply(input, paste, collapse = ',')
     }
   } 
-  # Handle data.frame input (typical Seurat FindAllMarkers output)
   else if (is.data.frame(input)) {
-    # Check if required columns exist
     required_cols <- c("gene", "cluster", "avg_log2FC", "p_val_adj")
     missing_cols <- setdiff(required_cols, names(input))
     if (length(missing_cols) > 0) {
@@ -39,12 +39,10 @@ process_input_data <- function(input, topgenenumber = 10) {
     
     # Process with or without dplyr
     if (!requireNamespace("dplyr", quietly = TRUE)) {
-      # Base R processing
       input <- input[input$avg_log2FC > 0, , drop = FALSE]
       processed <- tapply(input$gene, list(input$cluster), 
                          function(i) paste0(i[1:min(length(i), topgenenumber)], collapse = ','))
     } else {
-      # dplyr processing for more sophisticated filtering
       top_genes <- input %>%
         dplyr::filter(p_val_adj < 2.2e-16, avg_log2FC > 0) %>%
         dplyr::group_by(cluster) %>%

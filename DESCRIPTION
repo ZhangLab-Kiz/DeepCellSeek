@@ -19,6 +19,7 @@ Imports:
     httr,
     jsonlite,
     glue,
+    magrittr,
     stats,
     utils
 Suggests:
