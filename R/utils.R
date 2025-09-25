@@ -3,16 +3,13 @@
 #' This module provides common utility functions used across different
 #' components of the DeepCellSeek package.
 
-# Import pipe operator
-#' @importFrom magrittr %>%
-NULL
-
 #' Process input data for cell annotation
 #' 
 #' This function standardizes different input formats (data frames, lists, vectors)
 #' into a consistent format for downstream processing by both local API calls 
 #' and DeepCellSeek gateway API calls.
 #' 
+#' @importFrom magrittr %>%
 #' @param input Input data in various formats:
 #'   - data.frame: Seurat FindAllMarkers output with columns: gene, cluster, avg_log2FC, p_val_adj
 #'   - list: Named list where each element contains gene names for a cluster
@@ -36,8 +33,7 @@ process_input_data <- function(input, topgenenumber = 10) {
       stop("❌ Input data.frame is missing required columns: ", 
            paste(missing_cols, collapse = ", "))
     }
-    
-    # Process with or without dplyr
+
     if (!requireNamespace("dplyr", quietly = TRUE)) {
       input <- input[input$avg_log2FC > 0, , drop = FALSE]
       processed <- tapply(input$gene, list(input$cluster), 
